@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY CALCULATOR</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.765);
+        }
+
+        .calculator {
+            background: transparent;
+            /* background-color: rgba(0, 0, 0, 0.603); */
+            border: 1px solid rgba(255, 255, 255, 0.744);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 3px 3px 8px 2px #e8e1e1;
+        }
+
+        input {
+            border: 1px solid rgba(255, 255, 255, 0.67);
+            width: 100%;
+            padding: 20px 30px;
+            margin: 10px;
+            margin-left: 0px;
+            background-color: rgba(0, 0, 255, 0.507);
+            box-shadow: 0px 6px 9px 3px rgba(0, 0, 255, 0.507);
+            font-size: large;
+            text-align: right;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.798);
+            font-weight: bolder;
+        }
+
+        .calculator::before {
+            content: 'CALCULATOR';
+            background-color: white;
+            font-weight: bold;
+            margin-right: -50px;
+            border-radius: 5px;
+            box-shadow: 2px 1px 5px 2px #e8e1e1;
+        }
+
+        .calculator:hover::before {
+            background-color: transparent;
+            color: #e8e1e1;
+            transition: all 0.3s ease;
+        }
+
+        input::placeholder {
+            color: beige;
+        }
+
+        input:hover {
+            background: transparent;
+        }
+
+        button {
+            border: none;
+            width: 60px;
+            height: 25px;
+            margin: 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: larger;
+        }
+
+        button:hover {
+            background-color: rgb(126, 150, 69);
+            box-shadow: 2px 2px 0px 1px #e8e1e1;
+        }
+
+        .equal-btn {
+            background-color: rgba(255, 166, 0, 0.89);
+
+        }
+
+        .equal-btn:hover {
+            background-color: rgba(242, 255, 0, 0.89);
+            box-shadow: 1px 2px 3px 3px #e8e1e1;
+            transition: all 0.3s ease;
+        }
+
+        .del-btn {
+            background-color: red;
+        }
+
+        .del-btn:hover {
+            background-color: rgba(222, 3, 3, 0.748);
+        }
+
+        .ac-btn {
+            background-color: burlywood;
+        }
+
+        .ac-btn:hover {
+            background-color: rgba(144, 90, 20, 0.919);
+        }
+
+        .operator {
+            color: green;
+            font-size: larger;
+        }
+
+        .operator:hover {
+            color: rgb(8, 85, 8);
+            background-color: white;
+            box-shadow: 2px 2px 0px 1px #956666;
+            font-size: larger;
+        }
+
+        @media (max-width: 480px) {
+            .calculator {
+                padding: 10px;
+                transform: scale(0.85);
+            }
+
+            input {
+                padding: 15px 20px;
+                font-size: medium;
+            }
+
+            button {
+                width: 50px;
+                height: 22px;
+                font-size: medium;
+                margin: 6px;
+            }
+
+            .calculator::before {
+                display: block;
+                font-size: 14px;
+                text-align: center;
+                margin-bottom: 10px;
+                margin-right: 0;
+                padding: 4px 8px;
+                width: 100%;
+                box-sizing: border-box;
+                position: relative;
+                top: -10px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .calculator {
+                transform: scale(0.75);
+            }
+
+            button {
+                width: 45px;
+                height: 20px;
+                font-size: small;
+            }
+
+            input {
+                font-size: small;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <input type="text" placeholder="0" id="inputbox">
+        <div>
+            <button class="ac-btn">AC</button>
+            <button class="del-btn">DEL</button>
+            <button class="operator">%</button>
+            <button class="operator">/</button>
+        </div>
+        <div>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="operator">*</button>
+        </div>
+        <div>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="operator">-</button>
+        </div>
+        <div>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="operator">+</button>
+        </div>
+        <div>
+            <button>00</button>
+            <button>0</button>
+            <button>.</button>
+            <button class="equal-btn">=</button>
+        </div>
+    </div>
+    <script>
+        let input = document.getElementById('inputbox');
+        let buttons = document.querySelectorAll('button');
+
+        let string = "";
+        let arr = Array.from(buttons);
+
+        arr.forEach(button => {
+            button.addEventListener('click', (e) => {
+                if (e.target.innerHTML == '=') {
+                    string = eval(string);
+                    input.value = string;
+                } else if (e.target.innerHTML == 'AC') {
+                    string = "";
+                    input.value = string;
+                }
+                else if (e.target.innerHTML == 'DEL') {
+                    string = string.substring(0, string.length - 1);
+                    input.value = string;
+                }
+
+                else {
+                    string += e.target.innerHTML;
+                    input.value = string;
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>
