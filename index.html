@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DEEPANSHU Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #1f242d;
+            color: #fff;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.light-mode {
+            background: #fff;
+            color: #000;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        nav.navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        nav .logo {
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav ul li:hover a,
+        nav ul li.active a {
+            color: #7cf03d;
+        }
+
+        .toggle-theme {
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        section {
+            padding: 100px 10%;
+            min-height: 100vh;
+        }
+
+        .home {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .home-info {
+            flex: 1 1 500px;
+        }
+
+        .home-info h1 {
+            font-size: 50px;
+        }
+
+        .typewriter {
+            display: inline-block;
+            border-right: 2px solid #7cf03d;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 4s steps(30, end), blink 0.7s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        .home-info p {
+            margin: 20px 0;
+            font-size: 16px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: #7cf03d;
+            color: #1f242d;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+            margin-right: 15px;
+        }
+
+        .btn:hover {
+            background: transparent;
+            border: 2px solid #7cf03d;
+            color: #7cf03d;
+        }
+
+        .social-icons {
+            margin-top: 25px;
+            margin-left: 1rem;
+        }
+
+        .social-icons a {
+            font-size: 22px;
+            color: #7cf03d;
+            margin-right: 15px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        .home-img {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+
+        .home-img img {
+            width: 80%;
+            max-width: 300px;
+            border-radius: 36%;
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .projects {
+            background: #292e39;
+        }
+
+        .projects h2 {
+            margin-bottom: 30px;
+            font-size: 30px;
+        }
+
+        .cards {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .card {
+            background: #1f242d;
+            padding: 20px;
+            border-radius: 12px;
+            transition: 0.3s ease;
+            box-shadow: 0 0 0 transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .contact {
+            background: #151a21;
+        }
+
+        .contact h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+        }
+
+        input,
+        textarea {
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: 2px solid #7cf03d;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #111;
+            color: #777;
+        }
+
+        .toggle-theme::after {
+            content: "MODE";
+            display: inline-block;
+            padding: 10px 25px;
+            background: #7cf03d;
+            color: #1f242d;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+            margin-right: 15px;
+        }
+
+        button#Amazon {
+            display: inline-block;
+            padding: 10px 25px;
+            background: #7cf03d;
+            color: #1f242d;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+            margin-right: 15px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button#Amazon:hover {
+            background: transparent;
+            border: 2px solid #7cf03d;
+            color: #7cf03d;
+        }
+
+        button#Netflix {
+            display: inline-block;
+            padding: 10px 25px;
+            background: #7cf03d;
+            color: #1f242d;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+            margin-right: 15px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button#Netflix:hover {
+            background: transparent;
+            border: 2px solid #7cf03d;
+            color: #7cf03d;
+        }
+
+        #Online-Meal {
+            display: inline-block;
+            padding: 10px 25px;
+            background: #7cf03d;
+            color: #1f242d;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+            margin-right: 15px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button#Online-Meal:hover {
+            background: transparent;
+            border: 2px solid #7cf03d;
+            color: #7cf03d;
+        }
+
+        #calculator {
+            display: inline-block;
+            padding: 10px 25px;
+            background: #7cf03d;
+            color: #1f242d;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+            margin-right: 15px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button#calculator:hover {
+            background: transparent;
+            border: 2px solid #7cf03d;
+            color: #7cf03d;
+        }
+
+        .home-img {
+            position: relative;
+            flex: 1 1 300px;
+            text-align: center;
+        }
+
+        .home-img img {
+            width: 80%;
+            max-width: 300px;
+            border-radius: 36%;
+            animation: fadeIn 2s ease-in;
+            position: relative;
+            z-index: 2;
+        }
+
+        .rotating-border {
+            position: absolute;
+            top: -1%;
+            left: -11%;
+            width: 116%;
+            height: 114%;
+            border: 6px solid #7cf03d;
+            border-bottom: none;
+            border-radius: 75%;
+            animation: spin 4s linear infinite;
+            z-index: 1;
+        }
+
+        /* nav ul li::after:hover{
+            content: "";
+            text-decoration: underline;
+
+        } */
+
+        nav ul li {
+            position: relative;
+            display: inline-block;
+            margin: 0 15px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            left: 0;
+            bottom: 0;
+            background-color: #7f00ff;
+            /* Your highlight color */
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
+        .animated-heading {
+            font-size: 3rem;
+            font-weight: bold;
+            animation: colorCycle 4s infinite alternate;
+        }
+
+        @keyframes colorCycle {
+            0% {
+                color: #ff6ec4;
+            }
+
+            33% {
+                color: #7873f5;
+            }
+
+            66% {
+                color: #4ade80;
+            }
+
+            100% {
+                color: #facc15;
+            }
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(270deg, #ff6ec4, #7873f5, #4ade80);
+            background-size: 600% 600%;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 5s ease infinite;
+        }
+
+        @keyframes gradientText {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .animated-subtitle {
+            font-size: 1.5rem;
+            font-weight: 500;
+            animation: neonGlow 5s linear infinite;
+        }
+
+        @keyframes neonGlow {
+            0% {
+                color: #00ffcc;
+                text-shadow:
+                    0 0 5px #00ffcc,
+                    0 0 10px #00ffcc,
+                    0 0 20px #00ffcc,
+                    0 0 30px #00ffcc;
+            }
+
+            33% {
+                color: #ff00ff;
+                text-shadow:
+                    0 0 10px #ff00ff,
+                    0 0 20px #ff00ff,
+                    0 0 30px #ff00ff,
+                    0 0 40px #ff00ff;
+            }
+
+            66% {
+                color: #00ffff;
+                text-shadow:
+                    0 0 10px #00ffff,
+                    0 0 25px #00ffff,
+                    0 0 35px #00ffff,
+                    0 0 50px #00ffff;
+            }
+
+            100% {
+                color: #00ffcc;
+                text-shadow:
+                    0 0 5px #00ffcc,
+                    0 0 15px #00ffcc,
+                    0 0 25px #00ffcc,
+                    0 0 40px #00ffcc;
+            }
+        }
+
+        .neon-projects {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00ffff;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            animation: glowColorCycle 4s ease-in-out infinite;
+        }
+
+        @keyframes glowColorCycle {
+            0% {
+                color: #00ffff;
+                text-shadow:
+                    0 0 5px #00ffff,
+                    0 0 10px #00ffff,
+                    0 0 20px #00ffff;
+            }
+
+            33% {
+                color: #00ffcc;
+                text-shadow:
+                    0 0 10px #00ffcc,
+                    0 0 20px #00ffcc,
+                    0 0 40px #00ffcc;
+            }
+
+            66% {
+                color: #00ff99;
+                text-shadow:
+                    0 0 10px #00ff99,
+                    0 0 20px #00ff99,
+                    0 0 40px #00ff99;
+            }
+
+            100% {
+                color: #00ffff;
+                text-shadow:
+                    0 0 5px #00ffff,
+                    0 0 10px #00ffff,
+                    0 0 20px #00ffff;
+            }
+        }
+
+        #glow-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            background-color: #111;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            animation: rainbowShadow 4s linear infinite;
+            box-shadow: 0 0 10px #ff0080;
+            transition: transform 0.3s ease;
+        }
+
+        #glow-button:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes rainbowShadow {
+            0% {
+                box-shadow: 0 0 10px #ff0080, 0 0 20px #ff0080, 0 0 30px #ff0080;
+            }
+
+            25% {
+                box-shadow: 0 0 10px #8a2be2, 0 0 20px #8a2be2, 0 0 30px #8a2be2;
+            }
+
+            50% {
+                box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+            }
+
+            75% {
+                box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+            }
+
+            100% {
+                box-shadow: 0 0 10px #ff0080, 0 0 20px #ff0080, 0 0 30px #ff0080;
+            }
+        }
+
+        .card {
+            background-color: #111;
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 300px;
+            margin: 2rem auto;
+            box-shadow: 0 0 10px #ff007f;
+            animation: rainbowCardGlow 5s linear infinite;
+            transition: transform 0.3s ease;
+        }
+
+        /* .card:hover {
+            transform: translateY(-5px);
+        } */
+
+        @keyframes rainbowCardGlow {
+            0% {
+                box-shadow: 0 0 15px #ff007f, 0 0 30px #ff007f, 0 0 45px #ff007f;
+            }
+
+            25% {
+                box-shadow: 0 0 15px #ff8c00, 0 0 30px #ff8c00, 0 0 45px #ff8c00;
+            }
+
+            50% {
+                box-shadow: 0 0 15px #00bfff, 0 0 30px #00bfff, 0 0 45px #00bfff;
+            }
+
+            75% {
+                box-shadow: 0 0 15px #00fa9a, 0 0 30px #00fa9a, 0 0 45px #00fa9a;
+            }
+
+            100% {
+                box-shadow: 0 0 15px #ff007f, 0 0 30px #ff007f, 0 0 45px #ff007f;
+            }
+        }
+
+        @keyframes neonGlow {
+            0% {
+                color: #00ff6e;
+                text-shadow:
+                    0 0 5px #00ff6e,
+                    0 0 10px #00ff6e,
+                    0 0 20px #00ff6e,
+                    0 0 30px #00ff6e;
+            }
+
+            33% {
+                color: #ff00ff;
+                text-shadow:
+                    0 0 10px #ff00ff,
+                    0 0 20px #ff00ff,
+                    0 0 30px #ff00ff,
+                    0 0 40px #ff00ff;
+            }
+
+            66% {
+                color: #00ffff;
+                text-shadow:
+                    0 0 10px #00ffff,
+                    0 0 25px #00ffff,
+                    0 0 35px #00ffff,
+                    0 0 50px #00ffff;
+            }
+
+            100% {
+                color: #00ffcc;
+                text-shadow:
+                    0 0 5px #00ffcc,
+                    0 0 15px #00ffcc,
+                    0 0 25px #00ffcc,
+                    0 0 40px #00ffcc;
+            }
+        }
+
+        .neon-contact {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00ff6e;
+            font-family: 'Poppins', sans-serif;
+            animation: glowColorCycle 4s ease-in-out infinite;
+        }
+
+        @keyframes neonGlow {
+            0% {
+                color: #ffff00c7;
+                text-shadow:
+                    0 0 5px #ffff00c7,
+                    0 0 10px #ffff00c7,
+                    0 0 20px #ffff00c7,
+                    0 0 30px #ffff00c7;
+            }
+
+            33% {
+                color: #ff00ff;
+                text-shadow:
+                    0 0 10px #ff00ff,
+                    0 0 20px #ff00ff,
+                    0 0 30px #ff00ff,
+                    0 0 40px #ff00ff;
+            }
+
+            66% {
+                color: #00ffff;
+                text-shadow:
+                    0 0 10px #00ffff,
+                    0 0 25px #00ffff,
+                    0 0 35px #00ffff,
+                    0 0 50px #00ffff;
+            }
+
+            100% {
+                color: #00ffcc;
+                text-shadow:
+                    0 0 5px #00ffcc,
+                    0 0 15px #00ffcc,
+                    0 0 25px #00ffcc,
+                    0 0 40px #00ffcc;
+            }
+        }
+
+        #neon-copy {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffff00c7;
+            font-family: 'Poppins', sans-serif;
+            animation: glowColorCycle 4s ease-in-out infinite;
+        }
+
+
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            .home {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .rotating-border {
+                position: absolute;
+                top: -1%;
+                left: -11%;
+                width: 116%;
+                height: 114%;
+                border: 6px solid #7cf03d;
+                border-bottom: none;
+                border-radius: 75%;
+                /* animation: linear infinite; */
+                animation: none;
+                z-index: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">Portfolio.</a>
+        <ul>
+            <li class="active"><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <span class="toggle-theme" onclick="toggleTheme()"></span>
+    </nav>
+
+    <section id="home" class="home">
+        <div class="home-info">
+            <h1 class="animated-heading">Deepanshu Thakur</h1>
+            <h2 class="typewriter">I'm a <span class="animated-subtitle">Frontend Developer</span></h2>
+            <p>I design and build beautiful websites using HTML, CSS & JavaScript.</p>
+            <a class="btn" id="glow-button" onclick="CV(this)">Download CV</a>
+            <a href="#contact" class="btn">Hire Me</a>
+
+            <div class="social-icons">
+                <a href="https://www.instagram.com/deepanshuthakur.295?igsh=MWo5YmpqZHI5c2hwOQ%3D%3D" target="_blank"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://github.com/Deepanshuthakur17" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/deepanshu-thakur-1ab5a4330?utm_source=share" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-microsoft"></i></a>
+                <!-- <a href="#" class="icon"><i class="fab fa-microsoft"></i></a> -->
+            </div>
+        </div>
+        <div class="home-img">
+            <div class="rotating-border"></div>
+            <img src="svgs/mypic-Copy.png" alt="My photo">
+        </div>
+
+    </section>
+
+    <section id="projects" class="projects">
+        <h2 class="neon-projects">My Projects</h2>
+        <div class="cards">
+            <div class="card">
+                <h3 class="animated-subtitle">Amazon Clone</h3>
+                <p>Fully responsive e-commerce frontend using HTML & CSS.</p>
+                <button id="Amazon" onclick="Amazon(this)">CHECK MY AMAZONE UI CLONE</button>
+            </div>
+            <div class="card">
+                <h3 class="animated-subtitle">Netflix Landing Page</h3>
+                <p>Beautiful UI with interactive content and animations.</p>
+                <button id="Netflix" onclick="Netflix(this)">CHECK MY NETFIX UI CLONE</button>
+            </div>
+            <div class="card">
+                <h3 class="animated-subtitle">Online Meal Website</h3>
+                <p>Advanced food delivery UI with login and checkout features.</p>
+                <button id="Online-Meal" onclick="OnlineMeal(this)">CHECK MY ONLINE MEAL</button>
+            </div>
+            <div class="card">
+                <h3 class="animated-subtitle">Calculator Website</h3>
+                <p>Fully functional calculator is here With Good UI.</p>
+                <button id="calculator" onclick="calculator(this)">CHECK MY Calculator</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="neon-contact">Contact Me</h2>
+        <form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p id="neon-copy">© 2025 DEEPANSHU THAKUR. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle("light-mode");
+        }
+
+        // projects button logic here
+        function Amazon() {
+            window.location.href = "amazon clone.html"; // or your main HTML file name
+        }
+        function Netflix() {
+            window.location.href = "Netflix clone.html"; // or your main HTML file name
+        }
+        function OnlineMeal() {
+            window.location.href = "newone.html"; // or your main HTML file name
+        }
+        function calculator() {
+            window.location.href = "Calculator.html"; // or your main HTML file name
+        }
+
+        // CV pdf logic here
+        function CV() {
+            window.location.href = "pdf's/netfix.pdf"; // or your main HTML file name
+        }
+    </script>
+</body>
+
+</html>
