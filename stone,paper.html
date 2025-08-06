@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game no.2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            background-color: rgba(40, 153, 153, 0.829);
+            color: white;
+            height: 5rem;
+            line-height: 5rem;
+        }
+
+        h1:hover {
+            color: black;
+            background-color: antiquewhite;
+        }
+
+        .choice {
+            height: 6rem;
+            width: 76px;
+        }
+
+        img {
+            height: 8rem;
+            width: 9rem;
+            /* object-fit: cover; */
+            border-radius: 50%;
+        }
+
+        img:hover {
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+        .choices {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6rem;
+            margin-top: 3rem;
+            margin-right: 3rem;
+        }
+
+        .score-board {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 4rem;
+            gap: 5rem;
+            font-size: 2rem;
+        }
+
+        #user-score,
+        #comp-score {
+            font-size: 4rem;
+        }
+
+        #msg {
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            background-color: rgb(104, 48, 48);
+            color: white;
+            width: 18rem;
+            display: inline-block;
+            border-radius: 1rem;
+            padding: 6px;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        p {
+            color: azure;
+        }
+
+        /* Phones ≤ 600 px */
+        @media (max-width: 600px) {
+            html {
+                font-size: 14px;
+            }
+
+            /* shrink rem base */
+
+            h1 {
+                height: 3.5rem;
+                line-height: 3.5rem;
+                font-size: 1.6rem;
+            }
+
+            .choices {
+                flex-direction: column;
+                /* stack rock / paper / scissors */
+                gap: 1.5rem;
+                margin: 1.5rem 0 0 0;
+            }
+
+            .choice {
+                width: auto;
+                /* let images size themselves */
+                height: auto;
+            }
+
+            img {
+                height: 6rem;
+                /* smaller images */
+                width: 6rem;
+            }
+
+            .score-board {
+                gap: 2rem;
+                font-size: 1.2rem;
+            }
+
+            #user-score,
+            #comp-score {
+                font-size: 2.5rem;
+            }
+
+            #msg {
+                width: 14rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Tiny phones ≤ 360 px */
+        @media (max-width: 360px) {
+            h1 {
+                font-size: 1.3rem;
+            }
+
+            img {
+                height: 5rem;
+                width: 5rem;
+            }
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <h1>Rock Paper Scissors</h1>
+    <div class="choices">
+        <div class="choice" id="rock">
+            <img src="images/stone hand.png" alt="">
+        </div>
+        <div class="choice" id="paper">
+            <img src="images/paper hand.png" alt="">
+        </div>
+        <div class="choice" id="scissors">
+            <img src="images/scissors.png" alt="">
+        </div>
+    </div>
+    <div class="score-board">
+        <div class="score">
+            <p id="user-score">0</p>
+            <p>You</p>
+        </div>
+        <div class="score">
+            <p id="comp-score">0</p>
+            <p>Comp</p>
+        </div>
+    </div>
+    <div class="msg-container">
+        <p id="msg">Play your move</p>
+    </div>
+    <script>
+        let userScore = 0;
+        let compScore = 0;
+
+        const choices = document.querySelectorAll(".choice");
+        const msg = document.querySelector("#msg");
+
+        const userScorePara = document.querySelector("#user-score");
+        const compScorePara = document.querySelector("#comp-score");
+
+        const genCompChoice = () => {
+            const options = ["rock", "paper", "scissors"];
+            const randIdx = Math.floor(Math.random() * 3);
+            return options[randIdx];
+        };
+
+        const drawGame = () => {
+            console.log("game was draw.");
+            msg.innerText = "Game was Draw. Play again.";
+            msg.style.backgroundColor = "blue";
+        }
+
+        const showWinner = (userWin, userChoice, compChoice) => {
+            if (userWin) {
+                userScore++;
+                userScorePara.innerText = userScore;
+                console.log("You Win!");
+                msg.innerText = `You Win! Your ${userChoice} beats ${compChoice}`;
+                msg.style.backgroundColor = "green";
+            }
+            else {
+                console.log("You Lose");
+                compScore++;
+                compScorePara.innerText = compScore;
+                msg.innerText = `You Lose. ${compChoice} beats Your ${userChoice}`;
+                msg.style.backgroundColor = "red";
+            }
+        }
+
+        const playGame = (userChoice) => {
+            console.log("user choice = ", userChoice);
+            const compChoice = genCompChoice();
+            console.log("comp choice = ", compChoice);
+
+            if (userChoice === compChoice) {
+                drawGame();
+            }
+            else {
+                let userWin = true;
+                if (userChoice === "rock") {
+                    userWin = compChoice === "paper" ? false : true;
+                }
+                else if (userChoice === "paper") {
+                    userWin = compChoice === "scissors" ? false : true;
+                }
+                else {
+                    userWin = compChoice === "rock" ? false : true;
+                }
+                showWinner(userWin, userChoice, compChoice);
+            }
+        };
+
+        choices.forEach((choice) => {
+            console.log(choice);
+            choice.addEventListener("click", () => {
+                const choiceId = choice.getAttribute("id")
+                const userChoice = choiceId; // Define userChoice here
+                playGame(userChoice); // Pass userChoice as an argument
+            });
+        });
+    </script>
+</body>
+
+</html>
