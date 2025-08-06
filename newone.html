@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food now</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto+Slab&display=swap"
+    rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      font-family: "Playfair Display", serif;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    /* Navbar */
+    #logo img {
+      width: 44px;
+    }
+
+    #navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+
+    #logo {
+      margin: 0px 30px;
+      height: 33px;
+    }
+
+    #navbar ul {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    #navbar ul li {
+      list-style: none;
+      font-size: 1.3rem;
+    }
+
+    #navbar ul li a {
+      color: white;
+      display: block;
+      padding: 3px 22px;
+      border-radius: 20px;
+      text-decoration: none;
+    }
+
+    #navbar ul li a:hover {
+      color: black;
+      background-color: white;
+    }
+
+    /* HOME */
+    #HOME {
+      display: flex;
+      flex-direction: column;
+      height: 417px;
+      padding: 3px 200px;
+      justify-content: center;
+      align-items: center;
+      background: url(images/Navbar.jpg) no-repeat center center/cover;
+      position: relative;
+      color: white;
+    }
+
+    .h-primary {
+      font-size: 3.8rem;
+      padding: 12px;
+    }
+
+    .h-secondary {
+      font-size: 2.6rem;
+      padding: 12px;
+    }
+
+    #HOME p {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .btn {
+      padding: 6px 20px;
+      border: 2px solid white;
+      background-color: brown;
+      color: white;
+      margin: 17px;
+      font-size: 1.5rem;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      color: black;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    /* SERVICES */
+    .services-container {
+      padding: 20px;
+    }
+
+    #services {
+      margin: 34px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    #services .box {
+      border: 2px solid brown;
+      border-radius: 15px;
+      background-color: rgb(237, 237, 237);
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+    }
+
+    #services .box img {
+      height: 185px;
+      display: block;
+      margin: auto;
+    }
+
+    /* ABOUT US */
+    #about-us-section {
+      background: url(images/Background.jpg) no-repeat center center/cover;
+      padding: 40px 20px;
+      color: white;
+    }
+
+    .h-primarycenter {
+      font-size: 45px;
+      font-weight: bolder;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .aboutus-item {
+      display: flex;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      border: 6px solid green;
+      border-radius: 15px;
+      padding: 20px;
+    }
+
+    .aboutus-item img {
+      width: 145px;
+      margin-right: 30px;
+      border-radius: 10px;
+    }
+
+    .aboutus-item p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    /* CONTACT */
+    #Contact {
+      background: url(images/telephone-586266.jpg) no-repeat center center/cover;
+      padding: 60px 20px;
+      color: white;
+    }
+
+    #contact-box {
+      background-color: rgba(0, 0, 0, 0.6);
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: black;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 991px) {
+      #navbar ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #navbar ul li {
+        margin: 10px 0;
+      }
+
+      #HOME {
+        padding: 20px;
+        height: auto;
+        text-align: center;
+      }
+
+      .h-primary {
+        font-size: 2.5rem;
+      }
+
+      .h-secondary {
+        font-size: 1.8rem;
+      }
+
+      #HOME p {
+        font-size: 1.2rem;
+      }
+
+      .btn {
+        font-size: 1.2rem;
+      }
+
+      #services {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .aboutus-item {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .aboutus-item img {
+        margin: 0 0 20px 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .h-primary {
+        font-size: 2rem;
+      }
+
+      .h-secondary {
+        font-size: 1.5rem;
+      }
+
+      #services .box {
+        width: 90%;
+      }
+
+      .aboutus-item p {
+        font-size: 1rem;
+      }
+
+      input,
+      textarea {
+        font-size: 14px;
+      }
+
+      #navbar ul li {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav id="navbar">
+    <div id="logo">
+      <img src="images/logo image.jpg" alt="Food now" />
+    </div>
+    <ul>
+      <li class="item"><a href="#">HOME</a></li>
+      <li class="item"><a href="#">SERVICES</a></li>
+      <li class="item"><a href="#">ABOUT US</a></li>
+      <li class="item"><a href="#">CONTACT US</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="HOME">
+      <h1 class="h-primary">Welcome to my online meal</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam,</p>
+      <p>Lorem ipsum dolor sit amet, consectetur</p>
+      <button class="btn">Order now</button>
+    </section>
+
+    <section class="services-container">
+      <h1 class="h-primary center">OUR SERVICES</h1>
+      <div id="services">
+        <div class="box">
+          <img src="images/Jun 25, 2025, 12_30_08 PM.png" alt="" />
+          <h2 class="h-secondary">FOOD DELIVERY</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+        </div>
+        <div class="box">
+          <img src="images/pizza-7175243.png" alt="" />
+          <h2 class="h-secondary">FOOD CATERING</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+        </div>
+        <div class="box">
+          <img src="images/burger-7145332_1920.png" alt="" />
+          <h2 class="h-secondary">BULK ORDERING</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about-us-section">
+      <h1 class="h-primarycenter">ABOUT US</h1>
+      <div class="aboutus-item">
+        <img src="images/logo image.jpg" alt="About Us" />
+        <p>
+          We believe that great food should be just a few clicks away...
+        </p>
+      </div>
+    </section>
+
+    <section id="Contact">
+      <h1 class="h-primary center">CONTACT US</h1>
+      <div id="contact-box">
+        <form>
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your Name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter your Email" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" placeholder="Enter your Phone" />
+          </div>
+          <div class="form-group">
+            <label for="location">Location:</label>
+            <input type="text" id="location" placeholder="Enter your Location" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" cols="30" rows="5"></textarea>
+          </div>
+          <button class="btn">Submit now</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    copyright &copy; www.Food now.com All rights reserved &reg;
+  </footer>
+</body>
+
+</html>
