@@ -7,8 +7,7 @@
   <title>Food now</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto+Slab&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto+Slab&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -38,20 +37,35 @@
       top: 0;
       background: rgba(0, 0, 0, 0.3);
       z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      flex-wrap: wrap;
     }
 
     #logo {
-      margin: 0px 30px;
       height: 33px;
+      top: -13px;
+      position: relative;
+    }
+
+    #menu-toggle {
+      display: none;
+      font-size: 2rem;
+      background: none;
+      color: white;
+      border: none;
+      cursor: pointer;
     }
 
     #navbar ul {
       display: flex;
       justify-content: space-evenly;
+      list-style: none;
     }
 
     #navbar ul li {
-      list-style: none;
       font-size: 1.3rem;
     }
 
@@ -215,15 +229,6 @@
 
     /* Responsive Adjustments */
     @media (max-width: 991px) {
-      #navbar ul {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      #navbar ul li {
-        margin: 10px 0;
-      }
-
       #HOME {
         padding: 20px;
         height: auto;
@@ -261,6 +266,34 @@
       }
     }
 
+    @media (max-width: 768px) {
+      #menu-toggle {
+        display: block;
+      }
+
+      #navbar ul {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        background-color: rgba(0, 0, 0, 0.9);
+      }
+
+      #navbar ul.active {
+        display: flex;
+      }
+
+      #navbar ul li {
+        text-align: center;
+        padding: 10px 0;
+        width: 100%;
+      }
+
+      #navbar ul li a {
+        padding: 10px;
+        display: block;
+      }
+    }
+
     @media (max-width: 600px) {
       .h-primary {
         font-size: 2rem;
@@ -287,6 +320,26 @@
         font-size: 1rem;
       }
     }
+
+    /* Extra small-phone tweak */
+    @media (max-width: 480px) {
+      .h-primary {
+        font-size: 1.8rem;
+      }
+      .h-secondary {
+        font-size: 1.3rem;
+      }
+      .btn {
+        font-size: 1rem;
+        padding: 6px 14px;
+      }
+      #services .box {
+        width: 100%;
+      }
+      .aboutus-item p {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 
@@ -295,9 +348,10 @@
     <div id="logo">
       <img src="images/logo image.jpg" alt="Food now" />
     </div>
+    <button id="menu-toggle">&#9776;</button>
     <ul>
       <li class="item"><a href="#HOME">HOME</a></li>
-      <li class="item"><a href="#service">SERVICES</a></li>
+      <li class="item"><a href="#services">SERVICES</a></li>
       <li class="item"><a href="#about-us-section">ABOUT US</a></li>
       <li class="item"><a href="#Contact">CONTACT US</a></li>
     </ul>
@@ -308,10 +362,10 @@
       <h1 class="h-primary">Welcome to my online meal</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam,</p>
       <p>Lorem ipsum dolor sit amet, consectetur</p>
-      <button class="btn">Order now</button>
+      <button class="btn" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Order now</button>
     </section>
 
-    <section id="service" class="services-container">
+    <section class="services-container">
       <h1 class="h-primary center">OUR SERVICES</h1>
       <div id="services">
         <div class="box">
@@ -375,6 +429,15 @@
   <footer>
     copyright &copy; www.Food now.com All rights reserved &reg;
   </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navbarUl = document.querySelector('#navbar ul');
+
+    menuToggle.addEventListener('click', () => {
+      navbarUl.classList.toggle('active');
+    });
+  </script>
 </body>
 
 </html>
