@@ -64,7 +64,7 @@
 <h3>💻 Desktop View</h3>
 <img src="https://i.ibb.co/RGp2rTVM/Light-house-test.png" alt="Desktop View" width="800">
 <h3>📱 Mobile View</h3>
-<img src="https://i.ibb.co/nNpMJL3H/Screenshot-20251024-233111-Chrome.jpg" alt="Mobile View" width="300">
+<img src="https://i.ibb.co/QvVh1Gr7/Screenshot-20251025-034110-Chrome.jpg" alt="Mobile View" width="300">
 </div>
 
 ---
@@ -101,8 +101,6 @@ Frontend Developer | UI/UX Enthusiast<br>
 
 <p align="center">
   <a href="https://deepanshuthakur17.github.io/my-portfolio/" target="_blank">
-    <img src="https://skillicons.dev/icons?i=html,css,js" alt="HTML CSS JS" height="48" style="margin: 0 10px;" />
-  </a>
   <a href="https://www.linkedin.com/in/deepanshu-thakur-1ab5a4330" target="_blank">
     <img src="https://skillicons.dev/icons?i=linkedin" alt="LinkedIn" height="48" style="margin: 0 10px;" />
   </a>
