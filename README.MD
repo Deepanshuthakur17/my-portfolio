@@ -1,4 +1,4 @@
-<h1 align="center">🌐 Personal Portfolio – Deepanshu Thakur</h1>
+<h1 align="center">🌐 Old Portfolio – Deepanshu Thakur</h1>
 
 <p align="center">
   <a href="https://deepanshuthakur17.github.io/my-portfolio/" target="_blank">
