@@ -62,9 +62,9 @@
 <div align="center">
 <h2 style="background: linear-gradient(90deg,#f59e0b,#9333ea); -webkit-background-clip: text; color: transparent;">📸 Screenshots</h2>
 <h3>💻 Desktop View</h3>
-<img src="https://i.ibb.co/RGp2rTVM/Light-house-test.png" alt="Desktop View" width="800">
+<img src="https://i.ibb.co/7qyFmdk/DEEPANSHU-Portfolio-10-25-2025-05-15-PM.png" alt="Desktop View" width="800">
 <h3>📱 Mobile View</h3>
-<img src="https://i.ibb.co/QvVh1Gr7/Screenshot-20251025-034110-Chrome.jpg" alt="Mobile View" width="300" hight="500">
+<img src="https://i.ibb.co/QvVh1Gr7/Screenshot-20251025-034110-Chrome.jpg" alt="Mobile View" width="300">
 </div>
 
 ---
