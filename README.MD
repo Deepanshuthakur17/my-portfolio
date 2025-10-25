@@ -64,7 +64,7 @@
 <h3>💻 Desktop View</h3>
 <img src="https://i.ibb.co/7qyFmdk/DEEPANSHU-Portfolio-10-25-2025-05-15-PM.png" alt="Desktop View" width="800">
 <h3>📱 Mobile View</h3>
-<img src="https://i.ibb.co/QvVh1Gr7/Screenshot-20251025-034110-Chrome.jpg" alt="Mobile View" width="300">
+<img src="https://i.ibb.co/QvVh1Gr7/Screenshot-20251025-034110-Chrome.jpg" alt="Mobile View" width="295" height="641">
 </div>
 
 ---
